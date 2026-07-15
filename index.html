@@ -1,0 +1,688 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahib Fragrâncias | Liquidação de Verão - Até 82% OFF</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --primary-dark: #E55A00;
+      --dark: #000000;
+      --light: #FFFFFF;
+      --gray: #333333;
+      --gold: #FFD700;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.4;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 12px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu-icon, .search-icon, .user-icon, .cart-icon {
+      font-size: 1.6em;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    .logo-container {
+      text-align: center;
+      flex: 1;
+    }
+    .logo-main {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      color: var(--dark);
+      margin: 0;
+      line-height: 1;
+    }
+    .logo-subtitle {
+      font-size: 0.85em;
+      font-weight: 400;
+      color: var(--gray);
+      margin-top: -4px;
+    }
+    /* Banner */
+    .offer-banner {
+      width: 100%;
+      display: block;
+      max-height: 100px;
+      object-fit: cover;
+    }
+    /* Conteúdo */
+    .promo-text {
+      font-size: 1.1em;
+      color: var(--primary);
+      font-weight: 600;
+      margin: 15px 0;
+      text-align: center;
+      padding: 0 10px;
+    }
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 10px;
+      background: #f9f9f9;
+      text-align: center;
+      font-size: 0.85em;
+      font-weight: 500;
+      color: var(--gray);
+    }
+    .benefit-item { flex: 1 1 45%; max-width: 200px; }
+    .products-section { padding: 25px 10px; }
+    .products-section h2 { text-align: center; margin-bottom: 25px; color: var(--primary); font-size: 1.5em; font-weight: 300; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      body { font-size: 16px; }
+      .products-grid { grid-template-columns: repeat(3, 1fr); gap: 35px; }
+      .benefits { gap: 20px; }
+      .benefit-item { flex: 1 1 220px; }
+      .offer-banner { max-height: 140px; }
+    }
+    .product-card {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: #fff;
+      padding: 10px;
+    }
+    .product-info { padding: 12px; }
+    .product-name {
+      font-size: 1em;
+      min-height: 40px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: #777;
+      font-size: 0.85em;
+    }
+    .price-new {
+      color: var(--primary);
+      font-size: 1.45em;
+      font-weight: 700;
+      margin: 4px 0;
+    }
+    .discount {
+      background: var(--primary);
+      color: white;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .btn-add {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+    .btn-add:hover { background: var(--primary-dark); }
+    /* Avaliações (sem foto) */
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 0;
+      font-size: 1em;
+      color: var(--gray);
+    }
+    .stars {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+    .review-count {
+      font-size: 0.85em;
+      color: #555;
+    }
+    /* Modal Popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 90%;
+      width: 360px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2em;
+      cursor: pointer;
+      color: var(--gray);
+    }
+    .modal-img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .modal-name {
+      font-size: 1.3em;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .modal-price {
+      color: var(--primary);
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .modal-desc {
+      font-size: 0.95em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .modal-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+      font-size: 1.1em;
+    }
+    .modal-btn:hover { background: var(--primary-dark); }
+    /* Área de Feedbacks dos Clientes */
+    .testimonials-section {
+      padding: 40px 15px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    .testimonials-section h2 { font-size: 1.8em; color: var(--primary); margin-bottom: 30px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .testimonial-photo { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 12px; }
+    .testimonial-name { font-weight: 600; font-size: 1.1em; margin-bottom: 5px; }
+    .testimonial-text { font-size: 0.95em; color: #444; line-height: 1.5; }
+    .testimonial-stars { color: var(--gold); font-size: 1.1em; margin-top: 8px; }
+
+    /* Galeria do Cliente */
+    .customer-gallery {
+      padding: 50px 15px;
+      background: var(--light);
+      text-align: center;
+      position: relative;
+    }
+    .customer-gallery::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 600px;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+      box-shadow: 0 0 15px var(--primary);
+      border-radius: 50%;
+    }
+    .customer-gallery h2 {
+      font-size: 2em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .customer-gallery p {
+      color: var(--gray);
+      margin-bottom: 40px;
+      font-size: 1.1em;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .gallery-item {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid #eee;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    .review-photo-gallery {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .review-stars-gallery {
+      color: var(--gold);
+      font-size: 1.2em;
+      margin: 8px 0;
+    }
+    .review-text-gallery {
+      font-size: 0.95em;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .review-name-gallery {
+      font-weight: 600;
+      font-size: 1em;
+      color: var(--primary);
+    }
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 30px;
+      font-weight: 300;
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-top">
+    <div class="menu-icon">≡</div>
+    <div class="logo-container">
+      <h1 class="logo-main">Mahib</h1>
+      <p class="logo-subtitle">Fragrâncias</p>
+    </div>
+    <div class="cart-icon">🛒</div>
+  </div>
+</div>
+
+<!-- Banner -->
+<img src="images/banner.webp" alt="Oferta de Verão Mahib" class="offer-banner">
+
+<div class="promo-text">
+  OS MAIS VENDIDOS EM PROMOÇÃO!<br>
+  Até 82% OFF + Frete Grátis
+</div>
+
+<section class="products-section">
+  <h2>PERFUMES EM DESTAQUE</h2>
+ 
+  <div class="products-grid">
+    <!-- 1. Asad Lattafa -->
+    <div class="product-card" data-product-key="asad">
+      <img src="images/asad-lattafa.jpg" alt="Asad Lattafa Masculino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">74% OFF</div>
+        <h3 class="product-name">Asad Lattafa Eau de Parfum Masculino 100ml</h3>
+        <div><span class="price-old">R$ 389,90</span></div>
+        <div class="price-new">R$ 99,90</div>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">(187 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 2. Attar Al Wesal Al Wataniah -->
+    <div class="product-card" data-product-key="attar">
+      <img src="images/attar-al-wesal.jpg" alt="Attar Al Wesal Masculino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">82% OFF</div>
+        <h3 class="product-name">Attar Al Wesal Al Wataniah Masculino 100ml</h3>
+        <div><span class="price-old">R$ 399,90</span></div>
+        <div class="price-new">R$ 69,99</div>
+        <div class="rating">
+          <span class="stars">★★★★☆</span>
+          <span class="review-count">(142 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 3. Sabah Al Ward Al Wataniah -->
+    <div class="product-card" data-product-key="sabah">
+      <img src="images/sabah-al-ward.jpg" alt="Sabah Al Ward Feminino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">68% OFF</div>
+        <h3 class="product-name">Sabah Al Ward Al Wataniah Feminino 100ml</h3>
+        <div><span class="price-old">R$ 216,90</span></div>
+        <div class="price-new">R$ 69,99</div>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">(215 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 4. Fakhar Rose Lattafa -->
+    <div class="product-card" data-product-key="fakhar_rose">
+      <img src="images/fakhar-rose.jpg" alt="Fakhar Rose Feminino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">67% OFF</div>
+        <h3 class="product-name">Fakhar Rose Lattafa Feminino 100ml</h3>
+        <div><span class="price-old">R$ 299,90</span></div>
+        <div class="price-new">R$ 99,90</div>
+        <div class="rating">
+          <span class="stars">★★★★½</span>
+          <span class="review-count">(98 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 5. Yara Lattafa -->
+    <div class="product-card" data-product-key="yara">
+      <img src="images/yara-lattafa.jpg" alt="Yara Lattafa Feminino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">67% OFF</div>
+        <h3 class="product-name">Yara Lattafa Eau de Parfum Feminino 100ml</h3>
+        <div><span class="price-old">R$ 299,90</span></div>
+        <div class="price-new">R$ 99,90</div>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">(270 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 6. Fakhar Black Lattafa -->
+    <div class="product-card" data-product-key="fakhar_black">
+      <img src="images/fakhar-black.jpg" alt="Fakhar Black Masculino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">66% OFF</div>
+        <h3 class="product-name">Fakhar Black Lattafa Masculino 100ml</h3>
+        <div><span class="price-old">R$ 292,90</span></div>
+        <div class="price-new">R$ 99,90</div>
+        <div class="rating">
+          <span class="stars">★★★★☆</span>
+          <span class="review-count">(154 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 7. Club de Nuit Intense Man Armaf -->
+    <div class="product-card" data-product-key="club_de_nuit">
+      <img src="images/club-de-nuit-intense.jpg" alt="Club de Nuit Intense Masculino 105ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">54% OFF</div>
+        <h3 class="product-name">Club de Nuit Intense Man Armaf Masculino 105ml</h3>
+        <div><span class="price-old">R$ 259,99</span></div>
+        <div class="price-new">R$ 119,70</div>
+        <div class="rating">
+          <span class="stars">★★★★½</span>
+          <span class="review-count">(198 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 8. Royal Amber Orientica -->
+    <div class="product-card" data-product-key="royal_amber">
+      <img src="images/royal-amber.jpg" alt="Royal Amber Feminino 80ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">77% OFF</div>
+        <h3 class="product-name">Royal Amber Orientica Feminino 80ml</h3>
+        <div><span class="price-old">R$ 598,99</span></div>
+        <div class="price-new">R$ 139,59</div>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">(112 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 9. Bareeq Al Dhahab Al Wataniah -->
+    <div class="product-card" data-product-key="bareeq">
+      <img src="images/bareeq-al-dhahab.jpg" alt="Bareeq Al Dhahab Masculino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">64% OFF</div>
+        <h3 class="product-name">Bareeq Al Dhahab Al Wataniah Masculino 100ml</h3>
+        <div><span class="price-old">R$ 185,00</span></div>
+        <div class="price-new">R$ 65,99</div>
+        <div class="rating">
+          <span class="stars">★★★★☆</span>
+          <span class="review-count">(78 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- 10. Shagaf Al Ward Al Wataniah -->
+    <div class="product-card" data-product-key="shagaf">
+      <img src="images/shagaf-al-ward.jpg" alt="Shagaf Al Ward Feminino 100ml" class="product-img">
+      <div class="product-info">
+        <div class="discount">61% OFF</div>
+        <h3 class="product-name">Shagaf Al Ward Al Wataniah Feminino 100ml</h3>
+        <div><span class="price-old">R$ 228,79</span></div>
+        <div class="price-new">R$ 89,99</div>
+        <div class="rating">
+          <span class="stars">★★★★½</span>
+          <span class="review-count">(235 avaliações)</span>
+        </div>
+        <button class="btn-add">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galeria do Cliente -->
+<section class="customer-gallery">
+  <h2>Galeria do Cliente</h2>
+  <p>Veja como nossos clientes estão curtindo os perfumes!</p>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/reviews/review-1.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★★</div>
+      <p class="review-text-gallery">"Cheiro incrível e dura o dia todo! Recomendo demais."</p>
+      <span class="review-name-gallery">Ana Clara</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/reviews/review-2.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★½</div>
+      <p class="review-text-gallery">"Embalagem perfeita e entrega super rápida."</p>
+      <span class="review-name-gallery">João Pedro</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/reviews/review-3.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★★</div>
+      <p class="review-text-gallery">"Perfume de alta qualidade, vale cada centavo!"</p>
+      <span class="review-name-gallery">Mariana</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/reviews/review-4.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★☆</div>
+      <p class="review-text-gallery">"Fixação excelente, já comprei o segundo."</p>
+      <span class="review-name-gallery">Carlos</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/reviews/review-5.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★★</div>
+      <p class="review-text-gallery">"Chegou antes do prazo e o cheiro é viciante!"</p>
+      <span class="review-name-gallery">Beatriz</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/reviews/review-6.jpg" alt="Cliente com perfume" class="review-photo-gallery">
+      <div class="review-stars-gallery">★★★★★</div>
+      <p class="review-text-gallery">"Loja confiável, produtos originais e preço justo."</p>
+      <span class="review-name-gallery">Rafael</span>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Popup -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">×</span>
+    <img id="modalImg" class="modal-img" src="" alt="Produto">
+    <h2 id="modalName" class="modal-name"></h2>
+    <p id="modalPrice" class="modal-price"></p>
+    <p id="modalDesc" class="modal-desc"></p>
+    <button class="modal-btn">Ir para o Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <p>Mahib Fragrâncias © 2026</p>
+  <p>Envio Rápido | Suporte WhatsApp | Compra Segura</p>
+</footer>
+
+<!-- Configuração de Pixels / Scripts de Rastreamento (Opcional) -->
+<!-- Cole aqui os scripts do Facebook Pixel ou Google Analytics se desejar -->
+
+<!-- JavaScript do Modal + Checkout -->
+<script>
+  // COLOQUE SEUS LINKS DE CHECKOUT AQUI
+  const CHECKOUT_LINKS = {
+    asad: "https://checkout.mahiibfragancias.shop/pay/ba905ba9-a00f-41ca-9101-ceb6fdefe848",
+    attar: "https://checkout.mahiibfragancias.shop/pay/fbe44ed1-ba89-4219-8e40-0dd9ff0b947d",
+    sabah: "https://checkout.mahiibfragancias.shop/pay/859aa808-4f2a-45a2-843c-d3a3d4cc3b0f",
+    fakhar_rose: "https://checkout.mahiibfragancias.shop/pay/5b93a5bf-180c-4c28-b674-d155007e5f64",
+    yara: "https://checkout.mahiibfragancias.shop/pay/ebdb679e-2638-47c0-a4a5-18ecf6c21b6a",
+    fakhar_black: "https://checkout.mahiibfragancias.shop/pay/1fa61b5d-f76a-42ab-96a6-d9590faf0d25",
+    club_de_nuit: "https://checkout.mahiibfragancias.shop/pay/b986eaed-b0a5-4ce9-82fe-d83abb8d3461",
+    royal_amber: "https://checkout.mahiibfragancias.shop/pay/a846db3e-ffd0-4201-a6e6-06a67aa2e691",
+    bareeq: "https://checkout.mahiibfragancias.shop/pay/73626517-85eb-4568-827b-b96dddce9925",
+    shagaf: "https://checkout.mahiibfragancias.shop/pay/83f61e11-7aa8-4162-b9ab-a4b78731a88a"
+  };
+
+  const modal = document.getElementById('productModal');
+  const closeModal = document.querySelector('.close-modal');
+  const btnAdds = document.querySelectorAll('.btn-add');
+  const checkoutBtn = document.querySelector('.modal-btn');
+
+  btnAdds.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const card = this.closest('.product-card');
+      const imgSrc = card.querySelector('.product-img').src;
+      const name = card.querySelector('.product-name').textContent;
+      const priceNew = card.querySelector('.price-new').textContent;
+      const priceOld = card.querySelector('.price-old').textContent;
+      const discount = card.querySelector('.discount').textContent;
+      const productKey = card.getAttribute('data-product-key');
+
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalName').textContent = name;
+      document.getElementById('modalPrice').textContent = `${priceNew} (${discount} - de ${priceOld})`;
+      document.getElementById('modalDesc').textContent = 'Produto 100% original, importado diretamente, alta fixação e projeção. Entrega rápida para todo Brasil!';
+
+      // Armazena a chave do produto selecionado
+      window.currentProductKey = productKey;
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  // Redireciona para o link de checkout do produto configurado
+  checkoutBtn.addEventListener('click', () => {
+    const key = window.currentProductKey;
+    const checkoutLink = CHECKOUT_LINKS[key];
+
+    if (checkoutLink && checkoutLink !== "SEU_LINK_DE_CHECKOUT_AQUI" && checkoutLink.trim() !== "") {
+      window.location.href = checkoutLink;
+    } else {
+      alert('Link de checkout não configurado para este produto. Por favor, adicione o seu link de checkout no script do arquivo index.html.');
+    }
+  });
+
+  closeModal.addEventListener('click', () => modal.style.display = 'none');
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) modal.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
+
